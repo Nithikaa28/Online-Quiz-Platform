@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="grid two">
+  <div class="card glass">
+    <h2>Welcome, {{ user.name }}</h2>
+    <p>Total Attempts: <strong>{{ total_attempts }}</strong></p>
+    <p>Best Score: <strong>{{ best_score }}</strong></p>
+    <a class="btn btn-primary" href="{{ url_for('quiz') }}">Take New Quiz</a>
+  </div>
+
+  <div class="card glass">
+    <h3>Recent Scores</h3>
+    {% if attempts %}
+      <ul class="score-list">
+        {% for a in attempts[:8] %}
+          <li>
+            <span>{{ a.score }}/{{ a.total }}</span>
+            <small>{{ a.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted">No attempts yet.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

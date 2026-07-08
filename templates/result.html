@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card glass center">
+  <h2>Quiz Result</h2>
+  <p class="big">{{ attempt.score }}/{{ attempt.total }}</p>
+  <p>Accuracy: <strong>{{ percentage }}%</strong></p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="{{ url_for('quiz') }}">Try Again</a>
+    <a class="btn btn-secondary" href="{{ url_for('analysis') }}">View Skill Analysis</a>
+  </div>
+</div>
+{% endblock %}

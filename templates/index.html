@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero glass">
+  <h1>Build Your Skills with <span>QuizNova</span></h1>
+  <p>Modern interactive quizzes, score tracking, and topic-wise skill analytics.</p>
+  <div class="hero-actions">
+    {% if user %}
+      <a class="btn btn-primary" href="{{ url_for('quiz') }}">Start Quiz</a>
+      <a class="btn btn-secondary" href="{{ url_for('dashboard') }}">Go to Dashboard</a>
+    {% else %}
+      <a class="btn btn-primary" href="{{ url_for('register') }}">Get Started</a>
+      <a class="btn btn-secondary" href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card glass">
+  <h2>Skill Analysis</h2>
+  {% if analysis_data %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>Correct</th>
+          <th>Wrong</th>
+          <th>Accuracy</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in analysis_data %}
+          <tr>
+            <td>{{ row.topic }}</td>
+            <td>{{ row.correct }}</td>
+            <td>{{ row.wrong }}</td>
+            <td>{{ row.accuracy }}%</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="muted">No analysis yet. Attempt a quiz first.</p>
+  {% endif %}
+</div>
+{% endblock %}
