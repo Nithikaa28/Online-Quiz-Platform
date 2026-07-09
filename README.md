@@ -6,9 +6,14 @@ A modern interactive quiz platform with authentication, score tracking, and skil
 
 - User registration and login/logout
 - Interactive quiz interface
-- Score tracking dashboard
-- Topic-wise skill analysis
-- Modern UI/UX with aesthetic fonts and color palette
+- Confidence-based answering with transparent weighted scoring:
+  - Low: +1 correct / 0 wrong
+  - Medium: +2 correct / -1 wrong
+  - High: +3 correct / -2 wrong
+- Deterministic adaptive difficulty flow (easy/medium/hard ordering from recent accuracy)
+- Weak-topic “Focus Areas” with concise recommendations
+- Streak + mastery indicators on dashboard and result screens
+- Modern light-theme UI with Inter + Poppins typography
 
 ## Tech Stack
 
@@ -37,3 +42,4 @@ Open: http://127.0.0.1:5000
 
 - Update `SECRET_KEY` in `app.py` before production use.
 - Database file (`quiz.db`) is auto-created on first run.
+- Existing databases are automatically upgraded with new attempt columns on app startup.

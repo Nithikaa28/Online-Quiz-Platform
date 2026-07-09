@@ -26,5 +26,19 @@
   {% else %}
     <p class="muted">No analysis yet. Attempt a quiz first.</p>
   {% endif %}
+
+  <h3>Focus Areas</h3>
+  {% if focus_areas %}
+    <ul class="focus-list">
+      {% for area in focus_areas %}
+        <li>
+          <strong>{{ area.topic }}</strong> — {{ area.accuracy }}% accuracy.
+          <span class="muted">{{ area.recommendation }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="muted">No weak topics detected currently.</p>
+  {% endif %}
 </div>
 {% endblock %}
