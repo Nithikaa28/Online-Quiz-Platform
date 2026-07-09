@@ -5,6 +5,8 @@
     <h2>Welcome, {{ user.name }}</h2>
     <p>Total Attempts: <strong>{{ total_attempts }}</strong></p>
     <p>Best Score: <strong>{{ best_score }}</strong></p>
+    <p>Current Streak: <strong>{{ current_streak }}</strong></p>
+    <p>Mastery Meter: <strong>{{ mastery }}%</strong></p>
     <a class="btn btn-primary" href="{{ url_for('quiz') }}">Take New Quiz</a>
   </div>
 
@@ -23,5 +25,21 @@
       <p class="muted">No attempts yet.</p>
     {% endif %}
   </div>
+</section>
+
+<section class="card glass">
+  <h3>Focus Areas</h3>
+  {% if focus_areas %}
+    <ul class="focus-list">
+      {% for area in focus_areas %}
+        <li>
+          <strong>{{ area.topic }}</strong> — {{ area.accuracy }}% accuracy.
+          <span class="muted">{{ area.recommendation }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="muted">No weak-topic signals yet. Keep attempting quizzes to unlock insights.</p>
+  {% endif %}
 </section>
 {% endblock %}

@@ -2,10 +2,18 @@
 {% block content %}
 <div class="card glass">
   <h2>Interactive Quiz</h2>
+  <div class="adaptive-meta">
+    <p><strong>Adaptive Track:</strong> {{ adaptive_meta.target_difficulty }} start ({{ adaptive_meta.difficulty_flow }})</p>
+    {% if adaptive_meta.recent_accuracy is not none %}
+      <p class="muted">Recent accuracy used for adaptation: {{ adaptive_meta.recent_accuracy }}%</p>
+    {% else %}
+      <p class="muted">No prior attempts yet, starting at balanced difficulty.</p>
+    {% endif %}
+  </div>
   <form method="POST" id="quizForm">
     {% for q in questions %}
       <div class="question-block">
-        <p><strong>Q{{ loop.index }}.</strong> {{ q.question }}</p>
+        <p><strong>Q{{ loop.index }}.</strong> {{ q.question }} <span class="badge">{{ q.difficulty|title }}</span></p>
         <div class="options">
           {% for opt in q.options %}
             <label>
@@ -13,6 +21,14 @@
               {{ opt }}
             </label>
           {% endfor %}
+        </div>
+        <div class="confidence-row">
+          <label for="confidence_{{ q.id }}">Confidence:</label>
+          <select name="confidence_{{ q.id }}" id="confidence_{{ q.id }}" required>
+            <option value="low">Low (+1 / 0)</option>
+            <option value="medium">Medium (+2 / -1)</option>
+            <option value="high">High (+3 / -2)</option>
+          </select>
         </div>
       </div>
     {% endfor %}

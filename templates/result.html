@@ -1,9 +1,86 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card glass center">
-  <h2>Quiz Result</h2>
-  <p class="big">{{ attempt.score }}/{{ attempt.total }}</p>
-  <p>Accuracy: <strong>{{ percentage }}%</strong></p>
+<div class="card glass">
+  <h2 class="center">Quiz Result</h2>
+  <div class="grid two">
+    <div class="result-metric">
+      <p class="metric-label">Raw Score</p>
+      <p class="big">{{ attempt.score }}/{{ attempt.total }}</p>
+      <p>Accuracy: <strong>{{ percentage }}%</strong></p>
+    </div>
+    <div class="result-metric">
+      <p class="metric-label">Confidence Score</p>
+      <p class="big">{{ attempt.confidence_score }}/{{ attempt.max_confidence_score }}</p>
+      <p>Confidence Accuracy: <strong>{{ confidence_percentage }}%</strong></p>
+    </div>
+  </div>
+
+  <div class="card soft-card">
+    <h3>Confidence Scoring</h3>
+    <ul class="score-list">
+      <li><span>Low confidence</span><strong>+{{ confidence_scoring.low.correct }} / {{ confidence_scoring.low.wrong }}</strong></li>
+      <li><span>Medium confidence</span><strong>+{{ confidence_scoring.medium.correct }} / {{ confidence_scoring.medium.wrong }}</strong></li>
+      <li><span>High confidence</span><strong>+{{ confidence_scoring.high.correct }} / {{ confidence_scoring.high.wrong }}</strong></li>
+    </ul>
+  </div>
+
+  {% if confidence_breakdown %}
+    <div class="card soft-card">
+      <h3>Confidence-aware Feedback</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Difficulty</th>
+            <th>Confidence</th>
+            <th>Result</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in confidence_breakdown %}
+            <tr>
+              <td>{{ row.topic }}</td>
+              <td>{{ row.difficulty }}</td>
+              <td>{{ row.confidence }}</td>
+              <td>{{ "Correct" if row.is_correct else "Incorrect" }}</td>
+              <td>{{ row.points }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+
+  <div class="grid two">
+    <div class="card soft-card">
+      <h3>Current Streak</h3>
+      <p class="big">{{ current_streak }}</p>
+      <p class="muted">Consecutive attempts with 70%+ accuracy.</p>
+    </div>
+    <div class="card soft-card">
+      <h3>Mastery Meter</h3>
+      <p class="big">{{ mastery }}%</p>
+      <p class="muted">Average accuracy over your latest attempts.</p>
+    </div>
+  </div>
+
+  <div class="card soft-card">
+    <h3>Focus Areas</h3>
+    {% if focus_areas %}
+      <ul class="focus-list">
+        {% for area in focus_areas %}
+          <li>
+            <strong>{{ area.topic }}</strong> — {{ area.accuracy }}% accuracy.
+            <span class="muted">{{ area.recommendation }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted">Great job! No weak topics detected yet.</p>
+    {% endif %}
+  </div>
+
   <div class="hero-actions">
     <a class="btn btn-primary" href="{{ url_for('quiz') }}">Try Again</a>
     <a class="btn btn-secondary" href="{{ url_for('analysis') }}">View Skill Analysis</a>
