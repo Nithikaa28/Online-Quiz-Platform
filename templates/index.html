@@ -1,16 +1,108 @@
-{% extends 'base.html' %}
-{% block content %}
-<section class="hero glass">
-  <h1>Build Your Skills with <span>QuizNova</span></h1>
-  <p>Modern interactive quizzes, score tracking, and topic-wise skill analytics.</p>
-  <div class="hero-actions">
-    {% if user %}
-      <a class="btn btn-primary" href="{{ url_for('quiz') }}">Start Quiz</a>
-      <a class="btn btn-secondary" href="{{ url_for('dashboard') }}">Go to Dashboard</a>
-    {% else %}
-      <a class="btn btn-primary" href="{{ url_for('register') }}">Get Started</a>
-      <a class="btn btn-secondary" href="{{ url_for('login') }}">Login</a>
-    {% endif %}
-  </div>
-</section>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{.Title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="navbar sticky">
+    <a class="brand" href="/">Sarab FoodHub</a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/menu">Menu</a>
+      <a href="/cart">Cart</a>
+      <a href="/checkout">Checkout</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button">🌙</button>
+    </nav>
+  </header>
+
+  <section class="hero section">
+    <div class="hero-content">
+      <h1>Fresh Meals, Fast Delivery, <span>Everyday Delight</span></h1>
+      <p>Order from Sarab's signature kitchen and enjoy restaurant-quality food at home.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/menu">Order Now</a>
+        <a class="btn btn-outline" href="#featured">Explore Dishes</a>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search for pizza, biryani, desserts..." id="homeSearch">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <h2>Popular Categories</h2>
+    <div class="grid categories-grid">
+      <article class="chip">🍕 Pizza</article>
+      <article class="chip">🍔 Burgers</article>
+      <article class="chip">🥗 Healthy Bowls</article>
+      <article class="chip">🍝 Pasta</article>
+      <article class="chip">🍛 Indian Curry</article>
+      <article class="chip">🍰 Desserts</article>
+    </div>
+  </section>
+
+  <section class="section" id="featured">
+    <h2>Featured Dishes</h2>
+    <div class="grid dish-grid">
+      <article class="food-card">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?auto=format&fit=crop&w=600&q=80" alt="Margherita Pizza">
+        <div class="food-info"><h3>Margherita Pizza</h3><p>Classic mozzarella with basil freshness.</p><span>₹299</span></div>
+      </article>
+      <article class="food-card">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Cheese Burger">
+        <div class="food-info"><h3>Double Cheese Burger</h3><p>Loaded with cheddar and smoky sauce.</p><span>₹249</span></div>
+      </article>
+      <article class="food-card">
+        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80" alt="Biryani">
+        <div class="food-info"><h3>Hyderabadi Biryani</h3><p>Aromatic basmati with tender chicken.</p><span>₹359</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section offers">
+    <h2>Special Offers</h2>
+    <div class="grid two-col">
+      <article class="offer-card">
+        <h3>Flat 40% OFF</h3>
+        <p>On first order above ₹499. Use code: <strong>FOOD40</strong></p>
+      </article>
+      <article class="offer-card">
+        <h3>Free Dessert</h3>
+        <p>Get a complimentary brownie with every family combo.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section testimonials">
+    <h2>What Customers Say</h2>
+    <div class="grid three-col">
+      <blockquote>“Fast delivery and super fresh meals. Loved the pasta!” <span>— Anika</span></blockquote>
+      <blockquote>“Restaurant-quality taste with perfect packaging.” <span>— Rahul</span></blockquote>
+      <blockquote>“Best food app style experience on desktop and mobile.” <span>— Mia</span></blockquote>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-box">
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Email:</strong> hello@sarabfoodhub.com</p>
+      <p><strong>Address:</strong> Sarab Kitchen, MG Road, Bengaluru</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Sarab FoodHub. Crafted for delightful food delivery.</p>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

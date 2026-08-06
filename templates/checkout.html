@@ -16,21 +16,33 @@
     <nav class="nav-links" id="navLinks">
       <a href="/">Home</a>
       <a href="/menu">Menu</a>
-      <a href="/register">Register</a>
+      <a href="/cart">Cart</a>
+      <a href="/checkout">Checkout</a>
       <button class="theme-toggle" id="themeToggle" type="button">🌙</button>
     </nav>
   </header>
 
-  <main class="section auth-wrap">
-    <section class="panel auth-panel">
-      <h1>Welcome Back</h1>
-      <p class="muted">Login to continue ordering your favorite meals.</p>
-      <form class="form-grid" onsubmit="event.preventDefault(); alert('Demo login successful!');">
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <button class="btn btn-primary" type="submit">Login</button>
-      </form>
-    </section>
+  <main class="section">
+    <h1>Checkout</h1>
+    <div class="grid two-col checkout-grid">
+      <section class="panel">
+        <h2>Customer Information</h2>
+        <form id="checkoutForm" class="form-grid">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <textarea name="address" rows="4" placeholder="Delivery Address" required></textarea>
+          <button class="btn btn-primary" type="submit">Place Order</button>
+        </form>
+        <p class="success-message" id="orderSuccess"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Order Summary</h2>
+        <div id="checkoutSummary"></div>
+        <h3>Total: ₹<span id="checkoutTotal">0</span></h3>
+      </section>
+    </div>
   </main>
 
   <footer class="footer"><p>© 2026 Sarab FoodHub</p></footer>

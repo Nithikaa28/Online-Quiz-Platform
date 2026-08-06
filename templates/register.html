@@ -1,13 +1,40 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="card glass form-card">
-  <h2>Create Account</h2>
-  <form method="POST" class="form-grid">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button class="btn btn-primary" type="submit">Register</button>
-  </form>
-  <p class="muted">Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{.Title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="navbar sticky">
+    <a class="brand" href="/">Sarab FoodHub</a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/menu">Menu</a>
+      <a href="/login">Login</a>
+      <button class="theme-toggle" id="themeToggle" type="button">🌙</button>
+    </nav>
+  </header>
+
+  <main class="section auth-wrap">
+    <section class="panel auth-panel">
+      <h1>Create Account</h1>
+      <p class="muted">Register and start ordering delicious food in minutes.</p>
+      <form class="form-grid" onsubmit="event.preventDefault(); alert('Demo account created!');">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button class="btn btn-primary" type="submit">Register</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer"><p>© 2026 Sarab FoodHub</p></footer>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{.Title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header class="navbar sticky">
+    <a class="brand" href="/">Sarab FoodHub</a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/menu">Menu</a>
+      <a href="/cart">Cart</a>
+      <a href="/checkout">Checkout</a>
+      <button class="theme-toggle" id="themeToggle" type="button">🌙</button>
+    </nav>
+  </header>
+
+  <main class="section">
+    <h1>Explore Our Menu</h1>
+    <p class="muted">Filter by your favorite category and add dishes instantly.</p>
+
+    <div class="filter-wrap">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pizza">Pizza</button>
+      <button class="filter-btn" data-filter="burger">Burger</button>
+      <button class="filter-btn" data-filter="indian">Indian</button>
+      <button class="filter-btn" data-filter="dessert">Dessert</button>
+    </div>
+
+    <section class="grid dish-grid" id="menuGrid">
+      <article class="food-card menu-item" data-category="pizza" data-id="1" data-name="Farmhouse Pizza" data-price="329" data-image="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Farmhouse Pizza">
+        <div class="food-info">
+          <h3>Farmhouse Pizza</h3>
+          <p>Loaded with veggies and rich tomato sauce.</p>
+          <div class="meta"><span>₹329</span><span>⭐ 4.7</span></div>
+          <button class="btn btn-primary add-cart-btn">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="food-card menu-item" data-category="burger" data-id="2" data-name="Crispy Chicken Burger" data-price="279" data-image="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Crispy Burger">
+        <div class="food-info">
+          <h3>Crispy Chicken Burger</h3>
+          <p>Crunchy patty with spicy mayo and lettuce.</p>
+          <div class="meta"><span>₹279</span><span>⭐ 4.5</span></div>
+          <button class="btn btn-primary add-cart-btn">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="food-card menu-item" data-category="indian" data-id="3" data-name="Butter Chicken Combo" data-price="399" data-image="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80">
+        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80" alt="Butter Chicken">
+        <div class="food-info">
+          <h3>Butter Chicken Combo</h3>
+          <p>Creamy gravy served with naan and rice.</p>
+          <div class="meta"><span>₹399</span><span>⭐ 4.8</span></div>
+          <button class="btn btn-primary add-cart-btn">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="food-card menu-item" data-category="dessert" data-id="4" data-name="Chocolate Lava Cake" data-price="179" data-image="https://images.unsplash.com/photo-1617305855058-336d24456869?auto=format&fit=crop&w=600&q=80">
+        <img src="https://images.unsplash.com/photo-1617305855058-336d24456869?auto=format&fit=crop&w=600&q=80" alt="Lava Cake">
+        <div class="food-info">
+          <h3>Chocolate Lava Cake</h3>
+          <p>Warm gooey center with vanilla scoop.</p>
+          <div class="meta"><span>₹179</span><span>⭐ 4.6</span></div>
+          <button class="btn btn-primary add-cart-btn">Add to Cart</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer"><p>© 2026 Sarab FoodHub</p></footer>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
