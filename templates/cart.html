@@ -16,21 +16,22 @@
     <nav class="nav-links" id="navLinks">
       <a href="/">Home</a>
       <a href="/menu">Menu</a>
-      <a href="/register">Register</a>
+      <a href="/cart">Cart</a>
+      <a href="/checkout">Checkout</a>
       <button class="theme-toggle" id="themeToggle" type="button">🌙</button>
     </nav>
   </header>
 
-  <main class="section auth-wrap">
-    <section class="panel auth-panel">
-      <h1>Welcome Back</h1>
-      <p class="muted">Login to continue ordering your favorite meals.</p>
-      <form class="form-grid" onsubmit="event.preventDefault(); alert('Demo login successful!');">
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <button class="btn btn-primary" type="submit">Login</button>
-      </form>
-    </section>
+  <main class="section">
+    <h1>Your Cart</h1>
+    <p class="muted">Review your items, update quantities, and continue to checkout.</p>
+
+    <div id="cartContainer" class="cart-list"></div>
+
+    <div class="cart-summary">
+      <h3>Total: ₹<span id="cartTotal">0</span></h3>
+      <a class="btn btn-primary" href="/checkout">Proceed to Checkout</a>
+    </div>
   </main>
 
   <footer class="footer"><p>© 2026 Sarab FoodHub</p></footer>
