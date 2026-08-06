@@ -1,39 +1,53 @@
-# Online Quiz Platform (Flask)
+# Sarab FoodHub - Online Food Ordering System (Go)
 
-A modern interactive quiz platform with authentication, score tracking, and skill analysis.
-
-## Features
-
-- User registration and login/logout
-- Interactive quiz interface
-- Score tracking dashboard
-- Topic-wise skill analysis
-- Modern UI/UX with aesthetic fonts and color palette
+A complete restaurant-style online food ordering web app built with **Go (`net/http`)**, **HTML5**, **CSS3**, and **JavaScript**.
 
 ## Tech Stack
 
-- Python
-- Flask
-- SQLAlchemy
-- SQLite
-- HTML/CSS/JS
+- Backend: Go (`net/http` only)
+- Template engine: `html/template`
+- Frontend: HTML, CSS, JavaScript
+- Storage (cart): Browser `localStorage`
 
-## Run locally
+## Project Structure
 
-```bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
-
-pip install -r requirements.txt
-python app.py
+```text
+food-ordering-system/
+├── main.go
+├── go.mod
+├── templates/
+│   ├── index.html
+│   ├── menu.html
+│   ├── cart.html
+│   ├── checkout.html
+│   ├── login.html
+│   └── register.html
+└── static/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── app.js
+    └── images/
 ```
 
-Open: http://127.0.0.1:5000
+## Run
 
-## Notes
+```bash
+go mod init foodhub
+go run main.go
+```
 
-- Update `SECRET_KEY` in `app.py` before production use.
-- Database file (`quiz.db`) is auto-created on first run.
+Open: `http://localhost:8080`
+
+## Implemented Features
+
+- Sticky navigation bar and responsive layout (desktop/tablet/mobile)
+- Hero section with CTA and food search field
+- Categories, featured dishes, offers, testimonials, contact, footer
+- Menu cards with image/name/description/price/rating
+- JavaScript category filtering
+- Cart with add/remove/increase/decrease and total amount
+- `localStorage` cart persistence
+- Checkout form with order summary and success message
+- Dark/light theme toggle
+- Smooth scrolling and mobile menu toggle
